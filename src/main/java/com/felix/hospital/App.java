@@ -1,4 +1,8 @@
 package com.felix.hospital;
+/**
+ * @author Felix Kibet
+ */
+
 import org.jpl7.*;
 
 public class App {
@@ -15,8 +19,7 @@ public class App {
         //Variable X = new Variable("Question");
         //Query q3 = new Query("askQuestion", new Term[]{new Atom("Question")});
         
-        Query q3 = new Query("hypothesis", new Term[]{new Atom("cold", "C")});
-        if(q3.hasSolution()) {
-        }
+        MainWindow window = new MainWindow();
+        
     }
 }
