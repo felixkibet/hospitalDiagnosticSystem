@@ -114,13 +114,13 @@ hypothesis(unknown). /*no diagnosis*/
  write('	1: Dolutegravic(Tivicay)'),
  nl,
  write('	2: Elvitegravic(Vitekta)'),
- write('NRTIS'),
+ write('"NRTIS"'),
  nl,
  write('	1: Abacavir(Ziagens)'),
  nl,
  write('	2: Lamivudine(Epivir)'),
  nl,
- write('Eat plenty of fruits to'),
+ write('Eat plenty of fruits to boost immune'),
  nl.
 
  explanation(arthritis):-
