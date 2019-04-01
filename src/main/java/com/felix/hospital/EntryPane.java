@@ -92,7 +92,7 @@ class EntryPane extends JPanel {
         // run the application in its own thread
         SwingUtilities.invokeLater(() -> {
             // set up the frame
-            final JFrame window = new JFrame("Hospital System");
+            final JFrame window = new JFrame("Expert Hospital System");
             window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
             // set a bordered layout with a padding of 10 all round
