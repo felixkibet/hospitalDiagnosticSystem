@@ -1,21 +1,21 @@
 package com.felix.hospital;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.LayoutManager;
 import java.awt.event.WindowEvent;
 import java.util.Arrays;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
@@ -47,17 +47,8 @@ class EntryPane extends JPanel {
         
         // add the question and symptoms
         JPanel top = new JPanel(new BorderLayout(10, 10));
-        top.setBorder(new TitledBorder("Consultation"));
-        top.add(new JLabel("Does the patient have the following symptoms?"), BorderLayout.NORTH);
 
-        // query panel [top] center layout
-        final JPanel qpCenter = new JPanel();
-        LayoutManager vertical = new BoxLayout(qpCenter, BoxLayout.PAGE_AXIS);
-        qpCenter.setLayout(vertical);
-        qpCenter.add(fldSymptoms);
-
-        // add rigid section
-        qpCenter.add(Box.createVerticalStrut(10));
+        top.add(fldSymptoms, BorderLayout.NORTH);
 
         // add the radio buttons to the group and panel
         final ButtonGroup radioGroup = new ButtonGroup();
@@ -66,21 +57,22 @@ class EntryPane extends JPanel {
             radioGroup.add(rdoButton);
             radioPanel.add(rdoButton);
         }
-        qpCenter.add(radioPanel);
-        qpCenter.add(qpCenter, BorderLayout.CENTER);
-
-        qpCenter.add(Box.createVerticalStrut(10));
+        top.add(radioPanel, BorderLayout.CENTER);
 
         final JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.TRAILING));
         buttonPanel.add(btnNext);
-        qpCenter.add(buttonPanel);
+        buttonPanel.add(new JSeparator(SwingConstants.VERTICAL));
+        
+        JButton btnConsult = new JButton("CONSULT");
+        btnConsult.addActionListener(l -> this.generateResults());
+        buttonPanel.add(btnConsult);
 
-        // add a consult button
-        top.add(new JButton("CONSULT"), BorderLayout.EAST);
+        // add the button panel last
+        top.add(buttonPanel, BorderLayout.SOUTH);
 
         fldResults.setSize(400, 250);
 
-        this.add(qpCenter, BorderLayout.NORTH);
+        this.add(top, BorderLayout.NORTH);
         this.add(fldResults, BorderLayout.CENTER);
     }
 
@@ -89,6 +81,11 @@ class EntryPane extends JPanel {
         fldSymptoms.setText("");
         rdoNo.setSelected(true);
         fldResults.setText("");
+    }
+
+    private void generateResults() {
+        // todo: generate results
+        fldResults.setText("RESULTS:");
     }
 
     public static void main(String[] args) {
@@ -104,8 +101,7 @@ class EntryPane extends JPanel {
             window.setContentPane(contentPane);
 
             // place instructions at the top
-            final JLabel lblInstructions = new JLabel("Please enter your queries below and they will be answered.",
-                    JLabel.LEFT);
+            final JLabel lblInstructions = new JLabel("Does the patient have the following symptoms?", JLabel.LEFT);
             contentPane.add(lblInstructions, BorderLayout.NORTH);
 
             // add the entry pane
