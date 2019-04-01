@@ -2,7 +2,6 @@ package com.felix.hospital;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.LayoutManager;
 import java.awt.event.WindowEvent;
 import java.util.Arrays;
@@ -22,6 +21,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
 class EntryPane extends JPanel {
+
+    private static final long serialVersionUID = 2333432343L;
 
     private final JTextField fldSymptoms;
     private final JRadioButton rdoYes, rdoNo, rdoUnknown;
